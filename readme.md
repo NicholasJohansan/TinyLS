@@ -1,4 +1,4 @@
-#TinyLS
+# TinyLS
 
 This is a GUI Computer Program which is supposedly making link shortening easier by having an desktop app instead of going to the webpage of https://tinyurl.com
 The way this program works, is by the user entering a URL and a custom Alias.
