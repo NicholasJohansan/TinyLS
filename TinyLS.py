@@ -17,7 +17,7 @@ if not os.path.exists(file_path):
 class Application:
 	def __init__(self, app):
 		self.app = app
-		self.version = 0.1
+		self.version = 0.2
 		self.latest = 0.0
 		self.downloadURL = "https://github.com/NicholasJohansan/TinyURL-LinkShortener-Program/raw/master/TinyLS.exe"
 		self.font = font.Font(family="helvetica", size=12)
@@ -25,40 +25,45 @@ class Application:
 		app.title("TinyURL Link Shortener")
 		app.geometry(f"+50+100")
 		app.resizable(False, False)
+		app['bg'] = "#fff"
 		try:
 			app.iconbitmap(file_path)
 		except:
 			pass
 
-		self.lblTitle = Label(app, text="TinyLS - Link Shortener", font=font.Font(family="fixedsys", size=20, weight="bold"), padx=20, pady=5)
-		self.lblTitle.grid(row=0, column=0, columnspan=4)
+		self.lblTitle = Label(app, text="TinyLS - Link Shortener", bd=3, relief=GROOVE, fg="#192ecc", font=font.Font(family="fixedsys", size=20, weight="bold"), padx=20, pady=5, bg="#aaeeff")
+		self.lblTitle.grid(row=0, column=0, columnspan=4, sticky="ew", ipadx=10, ipady=5)
 
-		self.lblSubtitle = Label(app, text="somewhat more efficient than going to the website", font=font.Font(family="fixedsys", size=6), padx=10)
-		self.lblSubtitle.grid(row=1, column=0, columnspan=4)
+		self.lblSubtitle = Label(app, text="somewhat more efficient than going to the website", bg="#fff", fg="#192ecc", font=font.Font(family="fixedsys", size=6), padx=10)
+		self.lblSubtitle.grid(row=1, column=0, columnspan=4, pady=(5, 15))
 
-		self.lblLink = Label(app, text="Enter your long URL below!", font=self.font, pady=10)
-		self.lblLink.grid(row=2, column=0, columnspan=4)
+		self.lblLink = Label(app, text="Enter your long URL below!", font=self.font, fg="#000080", bg="#fff")
+		self.lblLink.grid(row=2, column=0, columnspan=4, pady=(10, 5))
 
-		self.entryURL = scrolledtext.ScrolledText(app, width=50, height=3, bd=4)
+		self.entryURL = scrolledtext.ScrolledText(app, font=self.font, width=50, height=5, bd=4, wrap='word', bg="#aaeeff", fg="#000080", highlightcolor="#000080", selectbackground="#aaeeff")
+		self.entryURL.vbar.configure(width=12, troughcolor="#192ecc", bg="#aaeeff", activebackground="#aaeeff")
 		self.entryURL.grid(row=3, column=0, columnspan=4, padx=5, pady=5)
 
-		self.lblAlias = Label(app, text="Custom Alias", font=self.font, pady=10)
-		self.lblAlias.grid(row=4, column=0, columnspan=1, sticky=E)
+		self.frameAlias = Frame(app, bg="#73e2ff")
+		self.frameAlias.grid(row=4, column=0, columnspan=4, sticky="ew")
 
-		self.entryAlias = Entry(app, width=37, bd=4)
-		self.entryAlias.grid(row=4, column=1, columnspan=3, padx=5, sticky=W, ipady=2)
+		self.lblAlias = Label(self.frameAlias, text="Custom Alias", font=self.font, pady=10, justify="left", bg="#ffffff", fg="#000080")
+		self.lblAlias.grid(row=0, column=0, sticky="e", ipadx=10, padx=(16, 5))
 
-		self.btnSubmit = Button(app, text="Shorten Link", font=self.font, command=self.shortenLink, width=40, height=1, bd=3)
+		self.entryAlias = Entry(self.frameAlias, font=self.font, bd=4, width=35, fg="#000080")
+		self.entryAlias.grid(row=0, column=1, padx=(5, 16), sticky="we", ipady=2)
+
+		self.btnSubmit = Button(app, text="Shorten Link", font=self.font, command=self.shortenLink, width=40, height=1, bd=5, fg="#000080", bg="#45d9ff", activebackground="#fff", borderwidth=5, activeforeground="#45d9ff", highlightcolor="#000000", relief=GROOVE)
 		self.btnSubmit.grid(row=5, column=0, columnspan=4, padx=5, pady=10)
 
-		self.lblVersion = Label(app, text=f"TinyLS v{self.version}", font=font.Font(family="helvetica", size=9))
-		self.lblVersion.grid(row=6, column=0, columnspan=4, pady=(20, 5))
+		self.lblVersion = Label(app, text=f"TinyLS v{self.version}", font=("helvetica", 9, "bold"), bg="#aaeeff", fg="#000080")
+		self.lblVersion.grid(row=6, column=0, columnspan=4, pady=(20, 5), sticky="ew")
 
-		self.btnUpdate = Button(app, text="Update", font=self.font, command=self.update, width=20, height=1, state=DISABLED)
-		self.btnUpdate.grid(row=7, column=0, columnspan=2, padx=5, pady=10, sticky=W)
+		self.btnUpdate = Button(app, text="Update", font=self.font, command=self.update, activebackground="#fff", activeforeground="#45d9ff", width=20, height=1, state=DISABLED, relief=FLAT, bg="#45d9ff", fg="#000080")
+		self.btnUpdate.grid(row=7, column=0, columnspan=2, sticky="ew")
 
-		self.btnInfo = Button(app, text="Info/About", font=self.font, command=lambda: messagebox.showinfo("Info/About", "This is a computer program designed to make link shortening more faster and easier.\n\nThis program utilises the TinyURL \"API\" by putting in parameters to the php url: https://tinyurl.com/create.php?alias=()&url=()\n\nThis program is made by @NJ889\nCopyright © 2020 Nicholas Johansan"), width=20, height=1)
-		self.btnInfo.grid(row=7, column=2, columnspan=2, padx=5, pady=10, sticky=E)
+		self.btnInfo = Button(app, text="Info/About", font=self.font, relief=FLAT, activebackground="#fff", activeforeground="#45d9ff", bg="#45d9ff", fg="#000080", command=lambda: messagebox.showinfo("Info/About", "This is a computer program designed to make link shortening more faster and easier.\n\nThis program utilises the TinyURL \"API\" by putting in parameters to the php url: https://tinyurl.com/create.php?alias=()&url=()\n\nThis program is made by @NJ889\nCopyright © 2020 Nicholas Johansan"), width=20, height=1)
+		self.btnInfo.grid(row=7, column=2, columnspan=2, sticky="ew")
 
 		self.checkVersion()
 		
@@ -90,7 +95,8 @@ class Application:
 			return
 
 	def shortenLink(self):
-		URL = self.entryURL.get("1.0", tkinter.END).rstrip("\n")
+		URL = self.entryURL.get("1.0", tkinter.END).strip().replace("\n", "")
+		print(URL)
 		Alias = self.entryAlias.get().rstrip("\n")
 		if URL == "":
 			messagebox.showinfo("Missing Fields", "Please fill in the URL first!")
