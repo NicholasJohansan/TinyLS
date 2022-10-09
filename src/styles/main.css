@@ -1,3 +1,40 @@
 :root {
   font-family: Avenir, sans-serif;
+  --primary-base: 192, 100%;
+  --primary-lightness: 83%;
+  --color-primary: hsl(192, 100%, 83%);
+  --color-primary-light: hsl(192, 100%, 73%);
+  --color-primary-text: #333;
+  --color-secondary: #eee;
+  --color-secondary-text: #333;
+}
+
+html[data-theme="dark"] {
+  --color-primary: hsl(198, 43%, 52%);
+  --color-primary-light: hsl(198, 43%, 42%);
+  --color-primary-text: #eee;
+  --color-secondary: #333;
+  --color-secondary-text: #eee;
+}
+
+:root {
+  background-color: var(--color-secondary);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  box-sizing: border-box;
+  flex-grow: 1;
+  width: 100%;
 }

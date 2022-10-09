@@ -1,0 +1,38 @@
+#titlebar {
+  height: 20px;
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  user-select: none;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.titlebar-title {
+  font-family: monospace;
+  user-select: none;
+  padding-left: 0.5rem;
+  font-size: 12px;
+  display: flex;
+  place-items: center;
+  letter-spacing: 0.5ch;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.titlebar-button:hover {
+  cursor: pointer;
+  background-color: var(--color-primary-light);
+  transition: background-color 0.2s ease;
+}
+
+html[data-theme="dark"] img {
+  filter: invert(1);
+}
