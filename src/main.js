@@ -1,3 +1,4 @@
+import $ from "jquery";
 import mainHtml from './html/main.html.js';
 
-document.querySelector('#app').innerHTML = mainHtml;
+$('#app').html(mainHtml);
