@@ -12,7 +12,14 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "window": {
+        "minimize": true,
+        "close": true,
+        "startDragging": true
+      },
+      "clipboard": {
+        "writeText": true
+      }
     },
     "bundle": {
       "active": true,
