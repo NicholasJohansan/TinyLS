@@ -71,7 +71,7 @@ body {
 #feedback-message {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   font-family: sans-serif;
   margin: 0.5rem;
   opacity: 1;
@@ -79,7 +79,7 @@ body {
 }
 
 #feedback-message.hidden {
-  transform: translateX(calc(100% + 0.5rem));
+  transform: translateX(calc(-100% - 0.5rem));
   opacity: 0;
   transition: all 0.2s ease;
 }
