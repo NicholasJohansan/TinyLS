@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.1.0",
-    "jquery": "^3.6.1"
+    "jquery": "^3.6.1",
+    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store"
   }
 }
