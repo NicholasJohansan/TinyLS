@@ -1,12 +1,11 @@
 :root {
-  font-family: Avenir, sans-serif;
-  --primary-base: 192, 100%;
-  --primary-lightness: 83%;
-  --color-primary: hsl(192, 100%, 83%);
-  --color-primary-light: hsl(192, 100%, 73%);
+  font-family: monospace;
+  --color-primary: hsl(192, 100%, 68%);
+  --color-primary-light: hsl(192, 100%, 58%);
   --color-primary-text: #333;
   --color-secondary: #eee;
   --color-secondary-text: #333;
+  --color-secondary-text-light: hsl(0, 0%, 30%);
 }
 
 html[data-theme="dark"] {
@@ -15,6 +14,7 @@ html[data-theme="dark"] {
   --color-primary-text: #eee;
   --color-secondary: #333;
   --color-secondary-text: #eee;
+  --color-secondary-text-light: hsl(0, 0%, 83%);
 }
 
 :root {
@@ -39,4 +39,30 @@ body {
   width: 100%;
   position: relative;
   color: var(--color-secondary-text);
+  font-size: 1rem;
+}
+
+#shorten-url-button {
+  margin-left: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-primary-text);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#shorten-url-button:hover {
+  background-color: var(--color-primary-light);
+}
+
+#shorten-url-button:active {
+  opacity: 0.6;
+  transition: all 0s;
+}
+
+#shorten-url-button:focus {
+  outline: none;
+  filter: drop-shadow(0 0 0.2rem var(--color-primary));
 }
