@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import api from '../api';
+import { writeText } from '@tauri-apps/api/clipboard';
 
 // Elements
 const form = $('form');
@@ -21,7 +22,8 @@ form.on('submit', async (e) => {
   if (link && alias) {
     const response = await api.shortenLink(link, alias);
     if (response.success) {
-      message = 'Success!';
+      await writeText(`https://tinyurl.com/${alias}`);
+      message = 'Success! Link has been copied to clipboard.';
     } else {
       message = response.message;
     }
