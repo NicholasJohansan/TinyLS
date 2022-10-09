@@ -37,4 +37,6 @@ body {
   box-sizing: border-box;
   flex-grow: 1;
   width: 100%;
+  position: relative;
+  color: var(--color-secondary-text);
 }
