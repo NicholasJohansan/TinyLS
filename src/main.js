@@ -26,13 +26,23 @@ $('form').on('submit', async (e) => {
   if (feedbackTimeout) {
     clearTimeout(feedbackTimeout);
   }
-  const response = await api.shortenLink($('#long-url-input').val(), $('#alias-url-input').val());
+
+  const link = $('#long-url-input').val();
+  const alias = $('#alias-url-input').val();
+
   var message;
-  if (response.success) {
-    message = 'Success!';
+  if (link && alias) {
+    const response = await api.shortenLink(link, alias);
+    if (response.success) {
+      message = 'Success!';
+    } else {
+      message = response.message;
+    }
   } else {
-    message = response.message;
+    if (!link) message = 'Error: missing url to shorten.';
+    else if (!alias) message = 'Error: missing alias.';
   }
+
   $('#feedback-message').text(message);
   $('#feedback-message').removeClass('hidden');
   feedbackTimeout = setTimeout(() => {
