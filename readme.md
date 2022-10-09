@@ -12,3 +12,7 @@ This is generally just a mini project I worked on to improve my tkinter and OOP 
 Though Windows Defender marks this as a Potentially Unwanted Program, I assure you that it is safe, you may check on VirusTotal!
 
 Enjoy!
+
+
+### Note
+This has now been remade with HTML, CSS and JS with jQuery and Tauri
