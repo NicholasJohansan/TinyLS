@@ -17,14 +17,23 @@ bindTitlebarEvents();
 bindModeToggle();
 bindUrlBox();
 
+import api from './api';
+
 let feedbackTimeout = null;
 
-$('form').on('submit', (e) => {
+$('form').on('submit', async (e) => {
   e.preventDefault();
   if (feedbackTimeout) {
     clearTimeout(feedbackTimeout);
   }
-  $('#feedback-message').text('Error: Please enter a valid url.');
+  const response = await api.shortenLink($('#long-url-input').val(), $('#alias-url-input').val());
+  var message;
+  if (response.success) {
+    message = 'Success!';
+  } else {
+    message = response.message;
+  }
+  $('#feedback-message').text(message);
   $('#feedback-message').removeClass('hidden');
   feedbackTimeout = setTimeout(() => {
     $('#feedback-message').addClass('hidden');
