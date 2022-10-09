@@ -16,3 +16,17 @@ import { bindUrlBox } from './urlBox';
 bindTitlebarEvents();
 bindModeToggle();
 bindUrlBox();
+
+let feedbackTimeout = null;
+
+$('form').on('submit', (e) => {
+  e.preventDefault();
+  if (feedbackTimeout) {
+    clearTimeout(feedbackTimeout);
+  }
+  $('#feedback-message').text('Error: Please enter a valid url.');
+  $('#feedback-message').removeClass('hidden');
+  feedbackTimeout = setTimeout(() => {
+    $('#feedback-message').addClass('hidden');
+  }, 3000);
+});

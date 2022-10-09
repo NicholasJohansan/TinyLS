@@ -26,6 +26,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow: hidden;
 }
 
 body {
@@ -65,4 +66,20 @@ body {
 #shorten-url-button:focus {
   outline: none;
   filter: drop-shadow(0 0 0.2rem var(--color-primary));
+}
+
+#feedback-message {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-family: sans-serif;
+  margin: 0.5rem;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+#feedback-message.hidden {
+  transform: translateX(calc(100% + 0.5rem));
+  opacity: 0;
+  transition: all 0.2s ease;
 }
