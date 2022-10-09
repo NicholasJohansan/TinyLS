@@ -19,6 +19,18 @@
   box-sizing: border-box;
 }
 
-#url-box .note {
-  font-size: 8px;
+#alias-url-span {
+  display: flex;
+  align-items: stretch;
+}
+
+#alias-url-span > span {
+  margin-top: 0.2rem;
+  padding: 1px 0px;
+  color: var(--color-secondary-text-light);
+  font-size: 1rem;
+}
+
+#alias-url-input {
+  display: inline;
 }
