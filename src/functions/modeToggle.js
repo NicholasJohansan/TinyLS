@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { settings } from '../store';
+import { runAsync } from '../utils';
 
 // Elements
 const html = $('html');
@@ -19,10 +20,12 @@ const setMode = (isDarkMode) => {
   }
 };
 
-let savedMode = await settings.get('mode');
-let isDarkMode = savedMode ? savedMode == 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-setMode(isDarkMode);
-toggleButton.on('click', () => {
-  isDarkMode = !isDarkMode;
+runAsync(async () => {
+  let savedMode = await settings.get('mode');
+  let isDarkMode = savedMode ? savedMode == 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
   setMode(isDarkMode);
+  toggleButton.on('click', () => {
+    isDarkMode = !isDarkMode;
+    setMode(isDarkMode);
+  });
 });
