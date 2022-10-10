@@ -38,6 +38,14 @@
   transition: background-color 0.2s ease;
 }
 
+#titlebar-close:hover {
+  background-color: coral;
+}
+
+#titlebar-close:hover svg {
+  color: black;
+}
+
 .titlebar svg {
   color: var(--color-primary-text);
 }
