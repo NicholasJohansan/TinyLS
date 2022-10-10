@@ -31,7 +31,8 @@
   transition: background-color 0.2s ease;
 }
 
-.titlebar-button:hover {
+.titlebar-button:hover,
+.titlebar-button.active {
   cursor: pointer;
   background-color: var(--color-primary-light);
   transition: background-color 0.2s ease;

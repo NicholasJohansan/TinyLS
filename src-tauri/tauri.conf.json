@@ -15,7 +15,8 @@
       "window": {
         "minimize": true,
         "close": true,
-        "startDragging": true
+        "startDragging": true,
+        "setAlwaysOnTop": true
       },
       "clipboard": {
         "writeText": true
